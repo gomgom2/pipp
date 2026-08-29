@@ -108,6 +108,12 @@
     }
 }
 
+@media (max-width: 40rem) {
+    .toc-menu-button {
+        top: 0.75rem;
+    }
+}
+
 .toc-menu-button span {
     position: absolute;
     top: 50%;
