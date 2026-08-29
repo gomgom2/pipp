@@ -608,6 +608,10 @@ h5.article-subheading-small {
     font-size: 1rem;
 }
 
+.legal-quote p b {
+    text-decoration: underline;
+}
+
 .section-footnotes {
     margin: 3rem 1.5rem;
     border-top: 1px solid #000;
