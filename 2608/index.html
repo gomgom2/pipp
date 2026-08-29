@@ -948,10 +948,13 @@
         </div>
     </aside>
 
+    <div class="share-toast" role="status" aria-live="polite">링크를 복사했습니다.</div>
+
     <script>
         const sectionOne = document.querySelector('#section-1');
         const tocMenuButton = document.querySelector('.toc-menu-button');
         const tocOverlay = document.querySelector('#toc-overlay');
+        const shareToast = document.querySelector('.share-toast');
 
         const setTocButtonVisibility = () => {
             tocMenuButton.classList.toggle('is-visible', sectionOne.getBoundingClientRect().top <= 0);
@@ -979,6 +982,38 @@
         window.addEventListener('scroll', setTocButtonVisibility, { passive: true });
         window.addEventListener('resize', setTocButtonVisibility);
         setTocButtonVisibility();
+
+        document.querySelectorAll('.section-share').forEach((shareGroup) => {
+            const section = shareGroup.closest('section[id]');
+            const shareUrl = new URL(window.location.href);
+            shareUrl.hash = section.id;
+            const encodedUrl = encodeURIComponent(shareUrl.href);
+            const encodedTitle = encodeURIComponent(document.title);
+            const shareButtons = shareGroup.querySelectorAll('.share-button');
+            const [xButton, facebookButton, kakaoButton, copyButton] = shareButtons;
+
+            xButton.setAttribute('aria-label', 'X로 공유');
+            facebookButton.setAttribute('aria-label', 'Facebook으로 공유');
+            copyButton.setAttribute('aria-label', '섹션 링크 복사');
+
+            xButton.addEventListener('click', () => {
+                window.open(`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`, '_blank', 'width=600,height=500');
+            });
+
+            facebookButton.addEventListener('click', () => {
+                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, '_blank', 'width=600,height=500');
+            });
+
+            copyButton.addEventListener('click', async () => {
+                await navigator.clipboard.writeText(shareUrl.href);
+                shareToast.classList.add('is-visible');
+                clearTimeout(shareToast.hideTimer);
+                shareToast.hideTimer = setTimeout(() => shareToast.classList.remove('is-visible'), 1800);
+                const originalLabel = copyButton.getAttribute('aria-label');
+                copyButton.setAttribute('aria-label', '링크가 복사되었습니다');
+                setTimeout(() => copyButton.setAttribute('aria-label', originalLabel), 1500);
+            });
+        });
     </script>
 
 </body>
