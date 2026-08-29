@@ -46,6 +46,30 @@
     animation: cover-scroll-bounce 1.5s ease-in-out infinite;
 }
 
+.cover-vol {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.01rem;
+}
+
+.cover-title {
+    display: flex;
+    flex-direction: column;
+}
+
+.cover-title span {
+    font-size: 3rem;
+    line-height: 1.1;
+    font-family: "Presentation";
+    font-weight: 900;
+    letter-spacing: -0.1rem;
+    text-align: center;
+}
+
+.cover-info {
+    text-align: center;
+}
+
 .toc-menu-button {
     position: fixed;
     z-index: 20;
@@ -223,29 +247,6 @@ body.toc-open {
     }
 }
 
-.cover-vol {
-    font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: -0.01rem;
-}
-
-.cover-title {
-    display: flex;
-    flex-direction: column;
-}
-
-.cover-title span {
-    font-size: 4rem;
-    line-height: 1.1;
-    font-family: "Presentation";
-    font-weight: 900;
-    letter-spacing: -0.1rem;
-    text-align: center;
-}
-
-.cover-info {
-    text-align: center;
-}
 
 .contents {
     padding-top: 3rem;
