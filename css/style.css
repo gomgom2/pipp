@@ -111,6 +111,8 @@
 @media (max-width: 40rem) {
     .toc-menu-button {
         top: 0.75rem;
+        width: 3rem;
+        height: 3rem;
     }
 }
 
