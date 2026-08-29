@@ -365,6 +365,7 @@ body.toc-open {
     font-size: 1.8rem;
     line-height: 1.4;
     letter-spacing: -0.01rem;
+    word-break: keep-all;
 }
 
 .section-small-title {
