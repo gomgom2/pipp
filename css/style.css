@@ -10,12 +10,31 @@
     position: relative;
 }
 
+.cover::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+}
+
 .cover-image {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
-    width: 90%;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     z-index: 1;
+}
+
+.cover-image figure {
+    width: 150%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-40%);
 }
 
 .cover-image img {
@@ -25,10 +44,24 @@
 
 .cover-inner {
     position: absolute;
-    top: 5%;
+    top: 50%;
     left: 0;
     right: 0;
-    z-index: 2;
+    z-index: 3;
+    transform: translateY(-40%);
+}
+
+@media (max-width: 40rem) {
+    .cover-image figure {
+        width: 180%;
+        left: 50%;
+        transform: translateX(-40%);
+    }
+
+    .cover-inner {
+        top: 50%;
+        transform: translateY(-50%);
+    }
 }
 
 .cover-scroll {
@@ -150,13 +183,6 @@
 
     50% {
         margin-top: 0.6rem;
-    }
-}
-
-@media (max-width: 40rem) {
-    .cover-inner {
-        top: 40%;
-        transform: translateY(-120%);
     }
 }
 
